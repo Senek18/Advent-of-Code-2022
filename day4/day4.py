@@ -22,5 +22,3 @@ with open("input_f.txt", 'r') as file:
             count2 += 1
 
 print(count1, count2)
-
-
