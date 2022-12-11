@@ -76,21 +76,11 @@ class Move:
         self.map[self.x_T, self.y_T] = 1
 
     def check(self):
-        if self.x_H == self.x_T and self.y_H == self.y_T:
-            self.touch = True
-        elif self.x_H + 1 == self.x_T and self.y_H - 1 == self.y_T:
-            self.touch = True
-        elif self.x_H == self.x_T and self.y_H - 1 == self.y_T:
-            self.touch = True
-        elif self.x_H - 1 == self.x_T and self.y_H - 1 == self.y_T:
-            self.touch = True
-        elif self.x_H - 1 == self.x_T and self.y_H == self.y_T:
-            self.touch = True
-        elif self.x_H - 1 == self.x_T and self.y_H + 1 == self.y_T:
-            self.touch = True
-        elif self.x_H == self.x_T and self.y_H + 1 == self.y_T:
-            self.touch = True
-        elif self.x_H + 1 == self.x_T and self.y_H + 1 == self.y_T:
+
+        x_diff = abs(self.x_H - self.x_T)**2
+        y_diff = abs(self.y_H - self.y_T)**2
+        d = np.sqrt(x_diff + y_diff)
+        if d == 1 or d == 0 or d == np.sqrt(2):
             self.touch = True
         else:
             self.touch = False
